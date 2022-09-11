@@ -1,0 +1,47 @@
+
+{% extends "layout.html" %}
+{% block title %}
+    Stock Quote
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>Stock Symbol</th>
+                <th>Qty. of Shares</th>
+                <th>Share Price</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+            {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock['stock'].upper() }}</td>
+                    <td>{{ stock['quantity'] }}</td>
+                    <td>{{ stock['price'] | usd}}</td>
+                    <td>{{ stock['total'] | usd}}</td>
+                    <td>
+                        <button class = ".btn buy" onclick = "/buy" >buy</button>
+                        <button class = ".btn sell" onclick = "/sell" >sell</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>CASH</td>
+                <td></td>
+                <td></td>
+                <td>{{cash | usd }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>TOTAL</strong></td>
+                <td></td>
+                <td></td>
+                <td>{{ total | usd }}</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+{% endblock %}
