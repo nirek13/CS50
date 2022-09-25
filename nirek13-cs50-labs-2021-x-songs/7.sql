@@ -1,0 +1,1 @@
+select avg(energy) from songs where artist_id = (select artist_id from artists where name = "Drake");
